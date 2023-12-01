@@ -13,6 +13,7 @@ for l in input.split():
         x = l[i]
         if x.isdigit():
             nums.append(x)
+            continue
         for j in range(len(numlist)):
             numStr = numlist[j]
             currstr = l[i:i+len(numStr)]
