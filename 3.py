@@ -1,4 +1,4 @@
-import aoc, re
+import aoc
 
 total = 0
 grid = []
