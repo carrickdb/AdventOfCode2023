@@ -1,5 +1,7 @@
 import input
 
+# Part 2
+
 seeds = list(map(int, input.seeds.split()))
 
 seeds = [seeds[i:i+2] for i in range(0, len(seeds), 2)]
@@ -52,28 +54,29 @@ for s, _ in notFound:
 print(lowest)
 
 
+# Part 1
 
-# seeds = list(map(int, seeds.split()))
-# maps = [seedToSoil, soilToFertilizer, fertilizerToWater, waterToLight, lightToTemperature, temperatureToHumidity, humidityToLocation]
+seeds = list(map(int, seeds.split()))
+maps = [seedToSoil, soilToFertilizer, fertilizerToWater, waterToLight, lightToTemperature, temperatureToHumidity, humidityToLocation]
 
-# for i in range(len(maps)):
-#     curr = []
-#     for line in maps[i].split("\n"):
-#         curr.append(list(map(int, line.split())))
-#     maps[i] = curr
+for i in range(len(maps)):
+    curr = []
+    for line in maps[i].split("\n"):
+        curr.append(list(map(int, line.split())))
+    maps[i] = curr
 
-# print(maps)
-# lowest = float("inf")
-# for seed in seeds:
-#     curr = seed
-#     found = False
-#     for map in maps:
-#         for dest, source, r in map:
-#             if curr >= source and curr < source + r:
-#                 curr = dest + curr - source
-#                 found = True
-#                 break
-#     print("location", curr)
-#     lowest = min(curr, lowest)
+print(maps)
+lowest = float("inf")
+for seed in seeds:
+    curr = seed
+    found = False
+    for map in maps:
+        for dest, source, r in map:
+            if curr >= source and curr < source + r:
+                curr = dest + curr - source
+                found = True
+                break
+    print("location", curr)
+    lowest = min(curr, lowest)
 
-# print(lowest)
+print(lowest)
