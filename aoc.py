@@ -6,3 +6,8 @@ def printMapGrid(g):
         for j in range(len(g[i].keys())):
             print(g[i][j], end="\t")
         print()
+
+def printGridList(g):
+    for row in g:
+        print(''.join(row))
+    print()
