@@ -1,20 +1,29 @@
 def getCount(grid):
     w = len(grid[0])
-    # print(w)
     for l in range(1,w):
         found = True
         r = min(l, w-l)
         for row in grid:
-            mirror = list(reversed(row[l:r+l]))
-            if row[l-r:l] != mirror:
-                found = False
+            for s in range(l-r, r+l):
+                prev = row[s]
+                if prev == "#":
+                    row[s] = "."
+                else:
+                    row[s] = "#"
+                mirror = list(reversed(row[l:r+l]))
+                if row[l-r:l] != mirror:
+                    found = False
+                row[s] = prev
+                if not found:
+                    break
+            if not found:
                 break
         if found:
             return l
     return None
 
 total = 0
-with open("input") as f:
+with open("input2") as f:
     currmap = []
     for l in f:
         if l == "\n":
