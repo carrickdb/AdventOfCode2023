@@ -9,21 +9,23 @@
 
 res = {}
 
-with open("input2") as f:
+with open("input2-12") as f:
     for l in f:
         row, nums = l.strip().split()
         nums = list(map(int, nums))
         lennums = len(nums)
         lenrow = len(row)
-        dp = [[1 for i in range(lenrow)]]
-        for i in range(lennums):
-            dp.append([0 for j in range(lenrow)])
-
-        for i in range(lenrow):
-            j = lenrow-i-1
-
-
-
+        dp = []
+        seen = False
+        for c in row[::-1]:
+            if c=='#':
+                seen = True
+            if seen:
+                dp.append(0)
+            else:
+                dp.append(1)
+        dp.append(1)
+        
 
 
 
