@@ -15,17 +15,34 @@ with open("input2-12") as f:
         nums = list(map(int, nums))
         lennums = len(nums)
         lenrow = len(row)
-        dp = []
+        dp = [[1]]
         seen = False
         for c in row[::-1]:
             if c=='#':
                 seen = True
             if seen:
-                dp.append(0)
+                dp[0].append(0)
             else:
-                dp.append(1)
-        dp.append(1)
-        
+                dp[0].append(1)
+        dpi = 1
+        for n in nums[::-1]:
+            cn = n
+            dp.append([0])
+            res = None
+            for i in range(len(row)):
+                curr = len(row)-i-1
+                currchar = row[curr]
+                if currchar == "#":
+                    cn -= 1
+                    res = 
+                elif currchar == ".":
+                    res = 
+            if res == None:
+                print("something went wrong")
+                exit()
+            dp[dpi].append(res)
+
+
 
 
 
