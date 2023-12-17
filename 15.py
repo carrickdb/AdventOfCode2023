@@ -19,11 +19,8 @@ def printBoxes(b):
                 print(f"[{l} {f}]", end="")
             print()
             
-
-
 boxes = [[] for _ in range(256)]
 for s in steps:
-    # print(s)
     if s[-1] == '-':
         label = s[:-1]
         box = HASH(label)
@@ -47,53 +44,29 @@ for s in steps:
             boxes[box].append([label, focallength])
     else:
         print("what is this: ", s)
-    # printBoxes(boxes)
-    # print()
 
 total = 0
 for i in range(len(boxes)):
     b = boxes[i]
     for j in range(len(b)):
         fl = (1+i)*(j+1)*b[j][1]
-        # print("fl:", fl)
         total += fl
 
 print(total)
 
+with open("input") as f:
+    for l in f:
+        steps = l.strip().split(",")
 
 
-"""
-The focusing power of a single lens is the result of multiplying together:
+sumtotal = 0
+for s in steps:
+    total = 0
+    for c in s:
+        total += ord(c)
+        total *= 17
+        total %= 256
+    sumtotal += total
 
-    One plus the box number of the lens in question.
-    The slot number of the lens within the box: 1 for the first lens, 2 for the second lens, and so on.
-    The focal length of the lens.
-"""
-
-
-
-
-
-
-# with open("input") as f:
-#     for l in f:
-#         steps = l.strip().split(",")
-
-
-# sumtotal = 0
-# """
-# Determine the ASCII code for the current character of the string.
-# Increase the current value by the ASCII code you just determined.
-# Set the current value to itself multiplied by 17.
-# Set the current value to the remainder of dividing itself by 256.
-# """
-# for s in steps:
-#     total = 0
-#     for c in s:
-#         total += ord(c)
-#         total *= 17
-#         total %= 256
-#     sumtotal += total
-
-# print(sumtotal)
+print(sumtotal)
 
