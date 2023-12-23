@@ -21,3 +21,21 @@ def getInput(filename):
         for l in f:
             input.append(l.strip())
     return input
+
+def gridify(input):
+    g = {}
+    for i in range(len(input)):
+        row = input[i]
+        for j in range(len(row)):
+            if i not in g:
+                g[i] = {}
+            g[i][j] = row[j]
+    return g
+
+def getNextSteps(i,j,g):
+    ns = []
+    for di,dj in dirs:
+        ni,nj = i+di, j+dj
+        if ni in g and nj in g[ni]:
+            ns.append((ni,nj))
+    return ns
