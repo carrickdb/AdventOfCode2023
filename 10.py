@@ -62,13 +62,13 @@ while not q.empty():
                 other = grid[ni][nj]
                 if isinstance(other, int):
                     if step == 13883 and other == 0:
-                        area += (ni-ci)*(cj+nj)/2  # Shoelace formula
+                        area += (ni-ci)*(cj+nj)/2
                         break
                     continue
                 ok = toMap[(di, dj)]
                 if other in ok:
                     q.put([ni, nj])
-                    area += (ni-ci)*(cj+nj)/2
+                    area += (ni-ci)*(cj+nj)/2 # Shoelace formula
                     break
     if done:
         break
