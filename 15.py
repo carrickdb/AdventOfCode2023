@@ -18,7 +18,7 @@ def printBoxes(b):
             for l, f in x:
                 print(f"[{l} {f}]", end="")
             print()
-            
+
 boxes = [[] for _ in range(256)]
 for s in steps:
     if s[-1] == '-':
