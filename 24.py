@@ -1,5 +1,5 @@
 import aoc
-import numpy as np
+import sympy as s
 
 input = aoc.getInput("input")
 
@@ -10,6 +10,26 @@ for l in input:
     pos = list(map(int, pos.split(", ")))
     vel = list(map(int, vel.split(", ")))
     hail.append((pos, vel))
+
+rpx,rpy,rpz,rvx,rvy,rvz = s.symbols("rpx,rpy,rpz,rvx,rvy,rvz")
+rp = [rpx,rpy,rpz]
+rv = [rvx,rvy,rvz]
+p, v = [], []
+t1,t2,t3 = s.symbols("t1,t2,t3")
+t = [t1,t2,t3]
+for i in range(3):
+    v.append([t[i]*(rv[j]-hail[i][1][j]) for j in range(len(rv))])
+    p.append([hail[i][0][j] - rp[j] for j in range(len(rp))])
+p = s.Matrix(p)
+v = s.Matrix(v)
+print(p)
+print(v)
+ans = s.solve(v-p)[0]
+print(ans)
+print(ans[rpx]+ans[rpy]+ans[rpz])
+
+
+
 
 
 
